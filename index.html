@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./styles/nomalize.css">
+    <link rel="stylesheet" href="./styles/style.css">
+    <link rel="icon" type="image/png" href="img/pngwing.com (1).png">
+    <title>Anonymous</title>
+</head>
+
+<body>
+ 
+
+    <div class="grid-container">
+
+        <div class="grid-item-1"><div class="loader">
+            <span>Anonymous</span>
+            <span>Anonymous</span>
+        </div></div>
+        <div class="grid-item-2">
+            <!-- <p>Lorem ipsum dolor sit.</p>
+            <p>Lorem ipsum dolor sit.</p>
+            <p>Lorem ipsum dolor sit.</p>
+            <p>Lorem ipsum dolor sit.</p>
+            <p>Lorem ipsum dolor sit.</p>
+            <p>Lorem ipsum dolor sit.</p> -->
+            <button>
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span> cyber attack
+            </button>
+            <button>
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span> cyber attack
+            </button>
+            <button>
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span> cyber attack
+            </button>
+            <button>
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span> cyber attack
+            </button>
+            <button>
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span> cyber attack
+            </button>
+        </div>
+        <div class="grid-item-3"> 
+            <div class="card">
+               
+            
+            <img src="./img/hacker.jpg" alt="" width="300px" height="250px">
+        </div>
+        <div class="card">
+            
+            <img src="./img/ha.png" alt="" width="300px" height="300px">
+        </div>
+        <div class="card">
+            
+            <img src="./img/hacker.webp" alt="" width="300px" height="300px">
+        </div>
+        </div>
+        <div class="text">
+           <p class="p-1">We are Anonymous  We are Legion  <br> <br> <br> We do not forgive We do not forget Expect us</p>
+           <P class="p-2"></P>
+        </div>
+        <div class="grid-item-4">
+            
+            
+            <button id="button">
+                <div class="svg-wrapper-1">
+                  <div class="svg-wrapper">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24">
+                      <path fill="none" d="M0 0h24v24H0z"></path>
+                      <path fill="currentColor" d="M1.946 9.315c-.522-.174-.527-.455.01-.634l19.087-6.362c.529-.176.832.12.684.638l-5.454 19.086c-.15.529-.455.547-.679.045L12 14l6-8-8 6-8.054-2.685z"></path>
+                    </svg>
+                  </div>
+                </div>
+                <a href="https://www.instagram.com/_baxa.ake/" target="_blank">instagram</a>
+              </button>
+        </div>
+      
+
+
+
+    </div>
+
+    <canvas id="c"></canvas>
+    <script>
+        var c = document.getElementById("c");
+        var ctx = c.getContext("2d");
+
+        //making the canvas full screen
+        c.height = window.innerHeight;
+        c.width = window.innerWidth;
+
+        //chinese characters - taken from the unicode charset
+        var matrix = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ123456789@#$%^&*()*&^%+-/~{[|`]}";
+        //converting the string into an array of single characters
+        matrix = matrix.split("");
+
+        var font_size = 10;
+        var columns = c.width / font_size; //number of columns for the rain
+        //an array of drops - one per column
+        var drops = [];
+        //x below is the x coordinate
+        //1 = y co-ordinate of the drop(same for every drop initially)
+        for (var x = 0; x < columns; x++)
+            drops[x] = 1;
+
+        //drawing the characters
+        function draw() {
+            //Black BG for the canvas
+            //translucent BG to show trail
+            ctx.fillStyle = "rgba(0, 0, 0, 0.04)";
+            ctx.fillRect(0, 0, c.width, c.height);
+
+            ctx.fillStyle = "green";//green text
+            ctx.font = font_size + "px arial";
+            //looping over drops
+            for (var i = 0; i < drops.length; i++) {
+                //a random chinese character to print
+                var text = matrix[Math.floor(Math.random() * matrix.length)];
+                //x = i*font_size, y = value of drops[i]*font_size
+                ctx.fillText(text, i * font_size, drops[i] * font_size);
+
+                //sending the drop back to the top randomly after it has crossed the screen
+                //adding a randomness to the reset to make the drops scattered on the Y axis
+                if (drops[i] * font_size > c.height && Math.random() > 0.975)
+                    drops[i] = 0;
+
+                //incrementing Y coordinate
+                drops[i]++;
+            }
+        }
+
+        setInterval(draw, 35);
+
+    </script>
+
+   <audio controls autoplay id="audio">
+    <source src="./audio/electronic.mp3" type="audio/mpeg" >
+   
+  </audio>
+</body>
+
+</html>
